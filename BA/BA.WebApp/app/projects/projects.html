@@ -1,0 +1,28 @@
+﻿<div cg-busy="[vm.loadPromise, vm.savePromise]">
+    <table class="table table-striped table-hover table-condensed">
+        <thead class="inverse">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Last Modified</th>
+                <th>Estimated Start</th>
+                <th>Actual Start</th>
+                <th>Estimated Completion Year</th>
+                <th>Actual Completion Date</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="project in vm.projects">
+                <td>{{ ::project.ProjectId }}</td>
+                <td>{{ ::project.Name }}</td>
+                <td>{{ ::project.LastModifiedDateTime.toDate() | date:'short' }}</td>
+                <td>{{ ::project.EstimatedStartDate.toDate() | date:'shortDate' }}</td>
+                <td>{{ ::project.ActualStartDate.toDate() | date:'shortDate' }}</td>
+                <td>{{ ::project.EstimatedCompletionYear }}</td>
+                <td>{{ ::project.ActualCompletionDate.toDate() | date:'shortDate' }}</td>
+                <td><button class="btn btn-default" ng-click="vm.updateProjectClick(project)">Update</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
