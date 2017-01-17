@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BADataContext.cs" />
+    <Compile Include="EntityConfigurations\DateEntryMap.cs" />
     <Compile Include="EntityConfigurations\ProjectMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

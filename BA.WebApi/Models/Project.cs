@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using BA.WebApi.Converters;
-using Newtonsoft.Json;
 
 namespace BA.WebApi.Models {
     public class Project {

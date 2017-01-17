@@ -1,6 +1,7 @@
 ﻿module App.Projects {
     export interface IProjectsService {
         getProjects(): ng.IPromise<Entities.Project[]>;
+        reset(): ng.IPromise<any>;
         saveProject(project: Entities.Project): ng.IPromise<Entities.Project>;
     }
 
@@ -31,6 +32,12 @@
 
                     return projects;
                 });
+        }
+
+        public reset(): ng.IPromise<any> {
+            let url = this.appConfig.webApiUrl + 'projects/reset';
+
+            return this.$http.put(url, null);
         }
 
         public saveProject(project: Entities.Project): ng.IPromise<Entities.Project> {

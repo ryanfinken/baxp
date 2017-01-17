@@ -4,6 +4,7 @@ using BA.Data.Entities;
 
 namespace BA.Data.DataAccess {
     public class BADataContext : DbContext {
+        public virtual DbSet<DateEntry> DateEntries { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
 
         public BADataContext() : base("name=BADataContext") {
@@ -11,6 +12,7 @@ namespace BA.Data.DataAccess {
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder) {
+            modelBuilder.Configurations.Add(new DateEntryMap());
             modelBuilder.Configurations.Add(new ProjectMap());
         }
     }
