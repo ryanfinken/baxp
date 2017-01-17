@@ -16,19 +16,28 @@
     </div>
 
     <div class="form-group">
-        <label class="col-sm-3 control-label">Moment.ToString</label>
+        <label class="col-sm-3 control-label">Moment.toString</label>
         <div class="col-sm-9">
             <p class="form-control-static">
-                {{ vm.momentString }}
+                {{ vm.momentDate.toString() }}
             </p>
         </div>
     </div>
 
     <div class="form-group">
-        <label class="col-sm-3 control-label">Moment.ToISOString</label>
+        <label class="col-sm-3 control-label">Moment.toISOString</label>
         <div class="col-sm-9">
             <p class="form-control-static">
-                {{ vm.momentIsoString }}
+                {{ vm.momentDate.toISOString() }}
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Moment.format('LLLL')</label>
+        <div class="col-sm-9">
+            <p class="form-control-static">
+                {{ vm.momentDate.format('LLLL') }}
             </p>
         </div>
     </div>
@@ -46,7 +55,7 @@
         <label class="col-sm-3 control-label">Moment.UTC.ToString</label>
         <div class="col-sm-9">
             <p class="form-control-static">
-                {{ vm.momentUtcString }}
+                {{ vm.momentUtcDate.toString() }}
             </p>
         </div>
     </div>
@@ -55,7 +64,16 @@
         <label class="col-sm-3 control-label">Moment.UTC.ToISOString</label>
         <div class="col-sm-9">
             <p class="form-control-static">
-                {{ vm.momentUtcIsoString }}
+                {{ vm.momentUtcDate.toISOString() }}
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Moment.UTC.format('LLLL')</label>
+        <div class="col-sm-9">
+            <p class="form-control-static">
+                {{ vm.momentUtcDate.format('LLLL') }}
             </p>
         </div>
     </div>

@@ -7,11 +7,7 @@
 
         public inputDate: string;
         public momentDate: moment.Moment;
-        public momentString: string;
-        public momentIsoString: string;
         public momentUtcDate: moment.Moment;
-        public momentUtcString: string;
-        public momentUtcIsoString: string;
         public sendDate: string;
         public serverDate: string;
 
@@ -29,14 +25,8 @@
 
         public applyInputDate() {
             this.momentDate = moment(this.inputDate);
-            this.momentString = this.momentDate.toString();
-            this.momentIsoString = this.momentDate.toISOString();
-
             this.momentUtcDate = moment.utc(this.inputDate);
-            this.momentUtcString = this.momentUtcDate.toString();
-            this.momentUtcIsoString = this.momentUtcDate.toISOString();
-
-            this.sendDate = this.momentIsoString;
+            this.sendDate = this.momentDate.toISOString();
         }
 
         public resetDateEntries() {
