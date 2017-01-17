@@ -15,3 +15,4 @@ function appRouteConfig($routeProvider, appConfigProvider) {
 angular
     .module('app')
     .config(appRouteConfig);
+//# sourceMappingURL=app.route.js.map

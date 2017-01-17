@@ -13,3 +13,4 @@ function projectsRouteConfig($routeProvider, appConfigProvider) {
 angular
     .module('app')
     .config(projectsRouteConfig);
+//# sourceMappingURL=projects.route.js.map

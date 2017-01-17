@@ -17,10 +17,10 @@
                 <td>{{ ::project.ProjectId }}</td>
                 <td>{{ ::project.Name }}</td>
                 <td>{{ ::project.LastModifiedDateTime.toDate() | date:'short' }}</td>
-                <td>{{ ::project.EstimatedStartDate.toDate() | date:'shortDate' }}</td>
-                <td>{{ ::project.ActualStartDate.toDate() | date:'shortDate' }}</td>
+                <td>{{ ::project.EstimatedStartDate.toDate() | date:'short' }}</td>
+                <td>{{ ::project.ActualStartDate.toDate() | date:'short' }}</td>
                 <td>{{ ::project.EstimatedCompletionYear }}</td>
-                <td>{{ ::project.ActualCompletionDate.toDate() | date:'shortDate' }}</td>
+                <td>{{ ::project.ActualCompletionDate.toDate() | date:'short' }}</td>
                 <td><button class="btn btn-default" ng-click="vm.updateProjectClick(project)">Update</button></td>
             </tr>
         </tbody>

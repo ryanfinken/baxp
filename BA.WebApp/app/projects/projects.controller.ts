@@ -36,6 +36,8 @@
         }
 
         private saveProject(project: Entities.Project) {
+            this.$log.info('ProjectsController > saveProject', project);
+
             this.savePromise = this.projectsService.saveProject(project);
 
             this.savePromise.then((p) => {

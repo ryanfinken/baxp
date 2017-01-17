@@ -22,3 +22,4 @@ var App;
         Entities.Project = Project;
     })(Entities = App.Entities || (App.Entities = {}));
 })(App || (App = {}));
+//# sourceMappingURL=project.entity.js.map

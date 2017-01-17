@@ -26,6 +26,7 @@ var App;
             };
             ProjectsController.prototype.saveProject = function (project) {
                 var _this = this;
+                this.$log.info('ProjectsController > saveProject', project);
                 this.savePromise = this.projectsService.saveProject(project);
                 this.savePromise.then(function (p) {
                     _this.loadProjects();
@@ -43,3 +44,4 @@ var App;
 angular
     .module('app')
     .controller('projectsController', App.Projects.ProjectsController);
+//# sourceMappingURL=projects.controller.js.map

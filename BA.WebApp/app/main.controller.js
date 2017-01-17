@@ -23,3 +23,4 @@ var App;
 angular
     .module('app')
     .controller("mainController", App.MainController);
+//# sourceMappingURL=main.controller.js.map

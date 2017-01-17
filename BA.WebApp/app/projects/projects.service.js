@@ -41,3 +41,4 @@ var App;
 angular
     .module('app')
     .service('projectsService', App.Projects.ProjectsService);
+//# sourceMappingURL=projects.service.js.map

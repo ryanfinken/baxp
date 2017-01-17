@@ -10,7 +10,7 @@ using BA.WebApi.Models;
 
 namespace BA.WebApi {
     public class WebApiApplication : System.Web.HttpApplication {
-        public static List<Project> projects = LoadInMemoryProjects();
+        //public static List<Project> projects = LoadInMemoryProjects();
 
         protected void Application_Start() {
             AreaRegistration.RegisterAllAreas();
@@ -18,6 +18,10 @@ namespace BA.WebApi {
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            MapperConfig.Configure();
+
+            GlobalConfiguration.Configuration.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
         }
 
         private static List<Project> LoadInMemoryProjects() {

@@ -33,3 +33,4 @@ angular
     .module('app')
     .provider('appConfig', App.Services.AppConfigService)
     .config(function (appConfigProvider) { });
+//# sourceMappingURL=app-config.service.js.map
