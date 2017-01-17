@@ -15,8 +15,14 @@
             this.init();
         }
 
-        public updateProjectClick(project: Entities.Project) {
+        public addDayClick(project: Entities.Project) {
             project.ActualCompletionDate.add(1, 'day');
+
+            this.saveProject(project);
+        }
+
+        public subtractDayClick(project: Entities.Project) {
+            project.ActualCompletionDate.add(-1, 'day');
 
             this.saveProject(project);
         }

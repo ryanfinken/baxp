@@ -7,14 +7,17 @@ using System.Web.Http;
 using AutoMapper;
 using BA.Data.DataAccess;
 using BA.WebApi.Models;
+using Common.Logging;
 
 namespace BA.WebApi.Controllers {
     [RoutePrefix("api/projects")]
     public class ProjectsController : ApiController {
         private readonly BADataContext dataContext;
+        private readonly ILog logger;
 
         public ProjectsController() {
             this.dataContext = new BADataContext();
+            this.logger = LogManager.GetLogger<ProjectsController>();
         }
 
         [Route("")]
@@ -27,6 +30,14 @@ namespace BA.WebApi.Controllers {
         [Route("{id}")]
         [HttpPut]
         public HttpResponseMessage UpdateProject(int id, [FromBody]Project project) {
+            this.logger.DebugFormat(
+                "ProjectId: {0}; EstimatedStartDate: {1}; ActualStartDate: {2}; ActualCompletionDate: {3}; LastModifiedDateTime: {4}", 
+                project.ProjectId,
+                project.EstimatedStartDate,
+                project.ActualStartDate,
+                project.ActualCompletionDate,
+                project.LastModifiedDateTime);
+
             var entity = this.dataContext.Projects.FirstOrDefault(x => x.ProjectId == project.ProjectId);
 
             if (entity == null) {

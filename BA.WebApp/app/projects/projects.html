@@ -21,7 +21,10 @@
                 <td>{{ ::project.ActualStartDate.toDate() | date:'short' }}</td>
                 <td>{{ ::project.EstimatedCompletionYear }}</td>
                 <td>{{ ::project.ActualCompletionDate.toDate() | date:'short' }}</td>
-                <td><button class="btn btn-default" ng-click="vm.updateProjectClick(project)">Update</button></td>
+                <td>
+                    <button class="btn btn-default" ng-click="vm.addDayClick(project)">Add</button>
+                    <button class="btn btn-default" ng-click="vm.subtractDayClick(project)">Subtract</button>
+                </td>
             </tr>
         </tbody>
     </table>
