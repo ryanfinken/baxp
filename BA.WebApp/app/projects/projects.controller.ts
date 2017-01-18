@@ -6,6 +6,8 @@
         ];
 
         public projects: Entities.Project[] = [];
+
+        public busyPromise: ng.IPromise<any>;
         public loadPromise: ng.IPromise<Entities.Project[]>;
         public savePromise: ng.IPromise<Entities.Project>;
         
@@ -19,6 +21,14 @@
             project.ActualCompletionDate.add(1, 'day');
 
             this.saveProject(project);
+        }
+
+        public resetProjectDates() {
+            this.busyPromise = this.projectsService.reset();
+
+            this.busyPromise.then(() => {
+                this.loadProjects();
+            });
         }
 
         public subtractDayClick(project: Entities.Project) {

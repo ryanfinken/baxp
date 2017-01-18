@@ -1,4 +1,7 @@
-﻿using System.Web;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Web;
 using System.Web.Optimization;
 
 namespace BA.WebApp {
@@ -41,15 +44,61 @@ namespace BA.WebApp {
                 "~/app/app.route.js",
                 "~/app/main.controller.js"
             );
-            appBundle.IncludeDirectory("~/app/entities", "*.js");
-            appBundle.IncludeDirectory("~/app/services", "*.js");
-            appBundle.IncludeDirectory("~/app/dateEntries", "*.js");
-            appBundle.IncludeDirectory("~/app/logs", "*.js");
-            appBundle.IncludeDirectory("~/app/projects", "*.js");
+            appBundle.IncludeDirectory("~/app/common/services", "*.js");
+            appBundle.IncludeDirectory("~/app/common/entities", "*.js");
+            IncludeDirectoryWithExclusion(appBundle, "~/app", "*.js", true, true, "common/*");
             //appBundle.Transforms.Add(new HashCacheTransform());
             bundles.Add(appBundle);
 
             //BundleTable.EnableOptimizations = true;
         }
+        
+        // based on http://stackoverflow.com/questions/13990622/asp-net-mvc-exclude-css-file-from-bundle/36080620#36080620
+        private static Bundle IncludeDirectoryWithExclusion(
+            Bundle bundle, 
+            string directoryVirtualPath, 
+            string searchPattern,
+            bool includeSubDirectories,
+            bool ignoreTopDirectory, 
+            params string[] excludePatterns
+        ) {
+            var folderPath = HttpContext.Current.Server.MapPath(directoryVirtualPath);
+
+            var searchOption = includeSubDirectories
+                                ? SearchOption.AllDirectories
+                                : SearchOption.TopDirectoryOnly;
+
+            var excludedFiles = GetFilesToExclude(folderPath, searchOption, ignoreTopDirectory, excludePatterns);
+            var resultFiles = Directory
+                .GetFiles(folderPath, searchPattern, searchOption)
+                .Where(file => !excludedFiles.Contains(file) && !file.Contains(".min."));
+
+            foreach (string resultFile in resultFiles) {
+                bundle.Include(directoryVirtualPath + resultFile.Replace(folderPath, "")
+                        .Replace("\\", "/"));
+            }
+
+            return bundle;
+        }
+
+        private static HashSet<string> GetFilesToExclude(
+            string path, 
+            SearchOption searchOption, 
+            bool ignoreTopDirectory, 
+            params string[] excludePatterns
+        ) {
+            var result = new HashSet<string>();
+
+            foreach (string pattern in excludePatterns) {
+                result.UnionWith(Directory.GetFiles(path, pattern, searchOption));
+            }
+
+            if (ignoreTopDirectory) {
+                result.UnionWith(Directory.GetFiles(path, "*", SearchOption.TopDirectoryOnly));
+            }
+
+            return result;
+        }
+
     }
 }

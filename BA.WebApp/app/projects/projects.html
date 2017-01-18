@@ -1,4 +1,4 @@
-﻿<div cg-busy="[vm.loadPromise, vm.savePromise]">
+﻿<div cg-busy="[vm.busyPromise, vm.loadPromise, vm.savePromise]">
     <table class="table table-striped table-hover table-condensed">
         <thead class="inverse">
             <tr>
@@ -28,4 +28,8 @@
             </tr>
         </tbody>
     </table>
+
+    <div class="well well-sm">
+        <button class="btn btn-danger" ng-click="vm.resetProjectDates()">Reset Project Dates</button>
+    </div>
 </div>

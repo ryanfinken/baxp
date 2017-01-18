@@ -1,4 +1,4 @@
-﻿<div ng-form="vm.mainForm" class="form-horizontal" cg-busy="[vm.loadPromise, vm.savePromise]">
+﻿<div ng-form="vm.mainForm" class="form-horizontal" cg-busy="[vm.busyPromise, vm.loadPromise, vm.savePromise]">
 
     <div class="panel panel-default">
 
@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="col-sm-4">
-                    <button class="btn btn-sm btn-default" ng-click="vm.applyInputDate()" title="Update moment values using this ISO as input">Apply Input Date</button>
+                    <button class="btn btn-sm btn-primary" ng-click="vm.applyInputDate()" title="Update moment values using this ISO as input">Apply Input Date</button>
                 </div>
             </div>
 
@@ -192,7 +192,7 @@
                     </div>
                 </div>
                 <div class="col-sm-4">
-                    <button class="btn btn-sm btn-default" ng-click="vm.sendToDateToServer()" title="Send this ISO date to the server to be saved to database and reload page">Send and Reload</button>
+                    <button class="btn btn-sm btn-primary" ng-click="vm.sendToDateToServer()" title="Send this ISO date to the server to be saved to database and reload page">Send and Reload</button>
                 </div>
             </div>
 
@@ -219,8 +219,6 @@
     </div>
 
     <div class="well well-sm">
-        <!--<button class="btn btn-primary" ng-click="vm.applyInputDate()">Apply Input Date</button>-->
-        <!--<button class="btn btn-default" ng-click="vm.sendToDateToServer()">Send Date</button>-->
         <button class="btn btn-danger" ng-click="vm.resetDateEntries()">Reset Date Entries</button>
     </div>
 </div>

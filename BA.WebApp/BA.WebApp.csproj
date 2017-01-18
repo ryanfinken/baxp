@@ -132,7 +132,6 @@
   <ItemGroup>
     <Content Include="app\dateEntries\dateEntry.html" />
     <Content Include="app\index.html" />
-    <Content Include="app\logs\logs.html" />
     <Content Include="app\projects\projects.html" />
     <Content Include="Content\angular-busy.css" />
     <Content Include="Content\angular-busy.min.css" />
@@ -218,16 +217,14 @@
     <TypeScriptCompile Include="app\app.ts" />
     <TypeScriptCompile Include="app\dateEntries\dateEntry.controller.ts" />
     <TypeScriptCompile Include="app\dateEntries\dateEntries.route.ts" />
-    <TypeScriptCompile Include="app\entities\dateEntry.entity.ts" />
-    <TypeScriptCompile Include="app\entities\project.entity.ts" />
+    <TypeScriptCompile Include="app\common\entities\dateEntry.entity.ts" />
+    <TypeScriptCompile Include="app\common\entities\project.entity.ts" />
     <TypeScriptCompile Include="app\dateEntries\dateEntries.service.ts" />
-    <TypeScriptCompile Include="app\logs\logs.route.ts" />
-    <TypeScriptCompile Include="app\logs\logs.controller.ts" />
     <TypeScriptCompile Include="app\main.controller.ts" />
     <TypeScriptCompile Include="app\projects\projects.controller.ts" />
     <TypeScriptCompile Include="app\projects\projects.route.ts" />
     <TypeScriptCompile Include="app\projects\projects.service.ts" />
-    <TypeScriptCompile Include="app\services\app-config.service.ts" />
+    <TypeScriptCompile Include="app\common\services\app-config.service.ts" />
     <TypeScriptCompile Include="Scripts\typings\angular-ui-bootstrap\index.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-component-router.d.ts" />
