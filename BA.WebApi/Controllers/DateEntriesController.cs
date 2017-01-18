@@ -38,8 +38,7 @@ namespace BA.WebApi.Controllers {
         [HttpPut]
         public HttpResponseMessage UpdateDateEntry(int id, [FromBody]DateEntry dateEntry) {
             this.logger.DebugFormat(
-                "DateEntryId: {0}; FlatDate: {1}",
-                dateEntry.DateEntryId,
+                "DateTime: {0}",
                 dateEntry.FlatDate);
 
             var entity = this.dataContext.DateEntries.Find(dateEntry.DateEntryId);

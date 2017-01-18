@@ -1,111 +1,226 @@
 ﻿<div ng-form="vm.mainForm" class="form-horizontal" cg-busy="[vm.loadPromise, vm.savePromise]">
-    <div class="form-group">
-        <label class="col-sm-3 control-label">Input Date (ISO)</label>
-        <div class="col-sm-9">
-            <input id="inputDate"
-                   name="inputDate"
-                   class="form-control"
-                   ng-model="vm.inputDate"
-                   required />
-            <div class="error" ng-show="vm.mainForm.$submitted && vm.mainForm.inputDate.$invalid">
-                <span>
-                    Input date is invalid.
-                </span>
+
+    <div class="panel panel-default">
+
+        <div class="panel-body">
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">1</label>
+                <label class="col-sm-3 control-label">Input Date (ISO)</label>
+                <div class="col-sm-4">
+                    <input id="inputDate"
+                           name="inputDate"
+                           class="form-control"
+                           ng-model="vm.inputDate"
+                           required />
+                    <div class="error" ng-show="vm.mainForm.$submitted && vm.mainForm.inputDate.$invalid">
+                        <span>
+                            Input date is invalid.
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <button class="btn btn-sm btn-default" ng-click="vm.applyInputDate()" title="Update moment values using this ISO as input">Apply Input Date</button>
+                </div>
             </div>
+
         </div>
+
     </div>
 
-    <div class="form-group">
-        <label class="col-sm-3 control-label">Moment.toString</label>
-        <div class="col-sm-9">
-            <p class="form-control-static">
-                {{ vm.momentDate.toString() }}
-            </p>
-        </div>
-    </div>
+    <div class="panel panel-default">
 
-    <div class="form-group">
-        <label class="col-sm-3 control-label">Moment.toISOString</label>
-        <div class="col-sm-9">
-            <p class="form-control-static">
-                {{ vm.momentDate.toISOString() }}
-            </p>
+        <div class="panel-heading">
+            Moment
         </div>
-    </div>
 
-    <div class="form-group">
-        <label class="col-sm-3 control-label">Moment.format('LLLL')</label>
-        <div class="col-sm-9">
-            <p class="form-control-static">
-                {{ vm.momentDate.format('LLLL') }}
-            </p>
-        </div>
-    </div>
+        <div class="panel-body">
 
-    <div class="form-group">
-        <label class="col-sm-3 control-label">Moment $filterDate</label>
-        <div class="col-sm-9">
-            <p class="form-control-static">
-                {{ vm.momentDate.toDate() | date:'short' }}
-            </p>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-sm-3 control-label">Moment.UTC.ToString</label>
-        <div class="col-sm-9">
-            <p class="form-control-static">
-                {{ vm.momentUtcDate.toString() }}
-            </p>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-sm-3 control-label">Moment.UTC.ToISOString</label>
-        <div class="col-sm-9">
-            <p class="form-control-static">
-                {{ vm.momentUtcDate.toISOString() }}
-            </p>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-sm-3 control-label">Moment.UTC.format('LLLL')</label>
-        <div class="col-sm-9">
-            <p class="form-control-static">
-                {{ vm.momentUtcDate.format('LLLL') }}
-            </p>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-sm-3 control-label">Moment.UTC $filterDate</label>
-        <div class="col-sm-9">
-            <p class="form-control-static">
-                {{ vm.momentUtcDate.toDate() | date:'short' }}
-            </p>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-sm-3 control-label">Send Date (ISO)</label>
-        <div class="col-sm-9">
-            <input id="sendDate"
-                   name="sendDate"
-                   class="form-control"
-                   ng-model="vm.sendDate"
-                   required />
-            <div class="error" ng-show="vm.mainForm.$submitted && vm.mainForm.sendDate.$invalid">
-                <span>
-                    Send date is invalid.
-                </span>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">2</label>
+                <label class="col-sm-3 control-label">ToString</label>
+                <div class="col-sm-4">
+                    <p class="form-control-static">
+                        {{ vm.momentDate.toString() }}
+                    </p>
+                </div>
+                <div class="col-sm-4">
+                    <p class="form-control-static">
+                        moment(inputDate).toString()
+                    </p>
+                </div>
             </div>
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">3</label>
+                <label class="col-sm-3 control-label">ToISOString</label>
+                <div class="col-sm-4">
+                    <p class="form-control-static">
+                        {{ vm.momentDate.toISOString() }}
+                    </p>
+                </div>
+                <div class="col-sm-4">
+                    <p class="form-control-static">
+                        moment(inputDate).toISOString()
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">4</label>
+                <label class="col-sm-3 control-label">Format</label>
+                <div class="col-sm-4">
+                    <p class="form-control-static">
+                        {{ vm.momentDate.format('LLLL') }}
+                    </p>
+                </div>
+                <div class="col-sm-4">
+                    <p class="form-control-static">
+                        moment(inputDate).format('LLLL')
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">5</label>
+                <label class="col-sm-3 control-label">Date Filter</label>
+                <div class="col-sm-4">
+                    <p class="form-control-static">
+                        {{ vm.momentDate.toDate() | date:'short' }}
+                    </p>
+                </div>
+                <div class="col-sm-4">
+                    <p class="form-control-static">
+                        moment(inputDate).toDate() | date:'short'
+                    </p>
+                </div>
+            </div>
+
         </div>
+
+    </div>
+
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            Moment (UTC)
+        </div>
+
+        <div class="panel-body">
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">6</label>
+                <label class="col-sm-3 control-label">ToString</label>
+                <div class="col-sm-4">
+                    <p class="form-control-static">
+                        {{ vm.momentUtcDate.toString() }}
+                    </p>
+                </div>
+                <div class="col-sm-4">
+                    <p class="form-control-static">
+                        moment.utc(inputDate).toString()
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">7</label>
+                <label class="col-sm-3 control-label">ToISOString</label>
+                <div class="col-sm-4">
+                    <p class="form-control-static">
+                        {{ vm.momentUtcDate.toISOString() }}
+                    </p>
+                </div>
+                <div class="col-sm-4">
+                    <p class="form-control-static">
+                        moment.utc(inputDate).toISOString()
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">8</label>
+                <label class="col-sm-3 control-label">Format</label>
+                <div class="col-sm-4">
+                    <p class="form-control-static">
+                        {{ vm.momentUtcDate.format('LLLL') }}
+                    </p>
+                </div>
+                <div class="col-sm-4">
+                    <p class="form-control-static">
+                        moment.utc(inputDate).format('LLLL')
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">9</label>
+                <label class="col-sm-3 control-label">Date Filter</label>
+                <div class="col-sm-4">
+                    <p class="form-control-static">
+                        {{ vm.momentUtcDate.toDate() | date:'short' }}
+                    </p>
+                </div>
+                <div class="col-sm-4">
+                    <p class="form-control-static">
+                        moment.utc(inputDate).toDate() | date:'short'
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="panel panel-default">
+
+        <div class="panel-body">
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">10</label>
+                <label class="col-sm-3 control-label">Send Date (ISO)</label>
+                <div class="col-sm-4">
+                    <input id="sendDate"
+                           name="sendDate"
+                           class="form-control"
+                           ng-model="vm.sendDate"
+                           required />
+                    <div class="error" ng-show="vm.mainForm.$submitted && vm.mainForm.sendDate.$invalid">
+                        <span>
+                            Send date is invalid.
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <button class="btn btn-sm btn-default" ng-click="vm.sendToDateToServer()" title="Send this ISO date to the server to be saved to database and reload page">Send and Reload</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="panel panel-default">
+
+        <div class="panel-body">
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label"></label>
+                <label class="col-sm-3 control-label">Server Log</label>
+                <div class="col-sm-8">
+                    <p class="form-control-static">
+                        <a href="{{ vm.logLink }}" target="_blank">{{ vm.logLink }}</a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
     <div class="well well-sm">
-        <button class="btn btn-primary" ng-click="vm.applyInputDate()">Apply Input Date</button>
-        <button class="btn btn-default" ng-click="vm.sendToDateToServer()">Send Date</button>
+        <!--<button class="btn btn-primary" ng-click="vm.applyInputDate()">Apply Input Date</button>-->
+        <!--<button class="btn btn-default" ng-click="vm.sendToDateToServer()">Send Date</button>-->
         <button class="btn btn-danger" ng-click="vm.resetDateEntries()">Reset Date Entries</button>
     </div>
 </div>

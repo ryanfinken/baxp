@@ -2,10 +2,12 @@
     export class DateEntryController {
         public static $inject = [
             '$log',
+            'appConfig',
             'dateEntriesService'
         ];
 
         public inputDate: string;
+        public logLink: string;
         public momentDate: moment.Moment;
         public momentUtcDate: moment.Moment;
         public sendDate: string;
@@ -19,6 +21,7 @@
 
         constructor(
             private $log: ng.ILogService,
+            private appConfig: App.Services.IAppConfigService,
             private dateEntriesService: IDateEntriesService) {
             this.init();
         }
@@ -47,6 +50,8 @@
 
         private init() {
             this.$log.info('DateEntriesController > init');
+
+            this.logLink = (this.appConfig.webApiUrl + 'files/logs/webapi.log').replace('/api/files', '/files');
 
             this.dateEntryId = 1;
             this.loadDateEntry();
