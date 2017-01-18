@@ -1,4 +1,6 @@
 ﻿using System;
+using BA.WebApi.Converters;
+using Newtonsoft.Json;
 
 namespace BA.WebApi.Models {
     public class DateEntry {

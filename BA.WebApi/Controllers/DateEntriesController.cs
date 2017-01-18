@@ -64,7 +64,7 @@ namespace BA.WebApi.Controllers {
 
             dateEntries.Add(new Data.Entities.DateEntry() {
                 DateEntryId = 1,
-                FlatDate = DateTime.Today
+                FlatDate = new DateTime(2016, 8, 1)
             });
 
             foreach (var dateEntry in dateEntries) {
