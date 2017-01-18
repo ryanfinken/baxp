@@ -14,12 +14,19 @@
     app.run([
         '$http',
         '$location',
+        '$log',
         '$rootScope',
+        'appConfig',
         function (
             $http: ng.IHttpService,
             $location: ng.ILocationService,
-            $rootScope: ng.IRootScopeService
-        ): void { }
+            $log: ng.ILogService,
+            $rootScope: ng.IRootScopeService,
+            appConfig: App.Services.IAppConfigService
+        ): void { 
+            $log.info('App > run');
+            $log.info('Current API: ' + appConfig.webApiUrl);
+        }
     ])
     .config([
         '$provide',

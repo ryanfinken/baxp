@@ -44,6 +44,7 @@ namespace BA.WebApp {
             appBundle.IncludeDirectory("~/app/entities", "*.js");
             appBundle.IncludeDirectory("~/app/services", "*.js");
             appBundle.IncludeDirectory("~/app/dateEntries", "*.js");
+            appBundle.IncludeDirectory("~/app/logs", "*.js");
             appBundle.IncludeDirectory("~/app/projects", "*.js");
             //appBundle.Transforms.Add(new HashCacheTransform());
             bundles.Add(appBundle);
