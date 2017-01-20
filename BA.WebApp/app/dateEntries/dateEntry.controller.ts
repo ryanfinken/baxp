@@ -1,14 +1,19 @@
 ﻿module App.DateEntries {
     export class DateEntryController {
         public static $inject = [
+            '$filter',
             '$log',
             'appConfig',
             'dateEntriesService'
         ];
 
+        public defaultFilterFormat: string;
+        public defaultMomentFormat: string;
+        public filterFormat: string;
         public inputDate: string;
         public logLink: string;
         public momentDate: moment.Moment;
+        public momentFormat: string;
         public momentUtcDate: moment.Moment;
         public sendDate: string;
         public serverDate: string;
@@ -20,6 +25,7 @@
         private dateEntryId: number;
 
         constructor(
+            private $filter: ng.IFilterService,
             private $log: ng.ILogService,
             private appConfig: App.Services.IAppConfigService,
             private dateEntriesService: IDateEntriesService) {
@@ -30,6 +36,14 @@
             this.momentDate = moment(this.inputDate);
             this.momentUtcDate = moment.utc(this.inputDate);
             this.sendDate = this.momentDate.toISOString();
+        }
+
+        public formatFilter(momentDate: moment.Moment) {
+            return this.$filter('date')(momentDate.toDate(), this.filterFormat || 'short');
+        }
+
+        public formatMoment(momentDate: moment.Moment) {
+            return momentDate.format(this.momentFormat || 'LLLL');
         }
 
         public resetDateEntries() {
@@ -52,6 +66,9 @@
             this.$log.info('DateEntriesController > init');
 
             this.logLink = (this.appConfig.webApiUrl + 'files/logs/webapi.log').replace('/api/files', '/files');
+
+            this.defaultFilterFormat = 'short';
+            this.defaultMomentFormat = 'LLLL';
 
             this.dateEntryId = 1;
             this.loadDateEntry();
