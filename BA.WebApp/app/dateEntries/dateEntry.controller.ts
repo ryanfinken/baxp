@@ -39,10 +39,16 @@
         }
 
         public formatFilter(momentDate: moment.Moment) {
+            if (!momentDate) {
+                return null;
+            }
             return this.$filter('date')(momentDate.toDate(), this.filterFormat || 'short');
         }
 
         public formatMoment(momentDate: moment.Moment) {
+            if (!momentDate) {
+                return null;
+            }
             return momentDate.format(this.momentFormat || 'LLLL');
         }
 
