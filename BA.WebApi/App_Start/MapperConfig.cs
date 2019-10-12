@@ -12,7 +12,7 @@ namespace BA.WebApi {
     }
 
     public class DefaultProfile: Profile {
-        protected override void Configure() {
+        public DefaultProfile() {
             this.CreateMap<Data.Entities.DateEntry, Models.DateEntry>();
             this.CreateMap<Data.Entities.Project, Models.Project>();
         }
