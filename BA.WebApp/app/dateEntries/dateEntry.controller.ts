@@ -1,5 +1,5 @@
 ﻿module App.DateEntries {
-    export class DateEntryController {
+    export class DateEntryController implements angular.IController {
         public static $inject = [
             '$filter',
             '$log',
@@ -28,8 +28,18 @@
             private $filter: ng.IFilterService,
             private $log: ng.ILogService,
             private appConfig: App.Services.IAppConfigService,
-            private dateEntriesService: IDateEntriesService) {
-            this.init();
+            private dateEntriesService: IDateEntriesService) { }
+
+        public $onInit(): void {
+            this.$log.info('DateEntriesController > $onInit');
+
+            this.logLink = (this.appConfig.webApiUrl + 'files/logs/webapi.log').replace('/api/files', '/files');
+
+            this.defaultFilterFormat = 'short';
+            this.defaultMomentFormat = 'LLLL';
+
+            this.dateEntryId = 1;
+            this.loadDateEntry();
         }
 
         public applyInputDate() {
@@ -63,21 +73,9 @@
         public sendToDateToServer() {
             let dateEntry = new Entities.DateEntry();
             dateEntry.DateEntryId = this.dateEntryId,
-            dateEntry.FlatDateIso = this.sendDate;
+                dateEntry.FlatDateIso = this.sendDate;
 
             this.saveDateEntry(dateEntry);
-        }
-
-        private init() {
-            this.$log.info('DateEntriesController > init');
-
-            this.logLink = (this.appConfig.webApiUrl + 'files/logs/webapi.log').replace('/api/files', '/files');
-
-            this.defaultFilterFormat = 'short';
-            this.defaultMomentFormat = 'LLLL';
-
-            this.dateEntryId = 1;
-            this.loadDateEntry();
         }
 
         private loadDateEntry() {

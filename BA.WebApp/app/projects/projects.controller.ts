@@ -1,5 +1,5 @@
 ﻿module App.Projects {
-    export class ProjectsController {
+    export class ProjectsController implements angular.IController {
         public static $inject = [
             '$log',
             'projectsService'
@@ -10,11 +10,15 @@
         public busyPromise: ng.IPromise<any>;
         public loadPromise: ng.IPromise<Entities.Project[]>;
         public savePromise: ng.IPromise<Entities.Project>;
-        
+
         constructor(
             private $log: ng.ILogService,
-            private projectsService: IProjectsService) {
-            this.init();
+            private projectsService: IProjectsService) { }
+
+        public $onInit(): void {
+            this.$log.info('ProjectsController > $onInit');
+
+            this.loadProjects();
         }
 
         public addDayClick(project: Entities.Project) {
@@ -35,12 +39,6 @@
             project.ActualCompletionDate.add(-1, 'day');
 
             this.saveProject(project);
-        }
-
-        private init() {
-            this.$log.info('ProjectsController > init');
-
-            this.loadProjects();
         }
 
         private loadProjects() {

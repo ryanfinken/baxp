@@ -1,7 +1,5 @@
-﻿﻿module App {
-    'use strict';
-
-    export class MainController {
+﻿module App {
+    export class MainController implements angular.IController {
         public static $inject = [
             '$scope',
             '$location',
@@ -12,12 +10,10 @@
             private $scope: ng.IScope,
             private $location: ng.ILocationService,
             private $log: ng.ILogService
-        ) {
-            this.init();
-        }
+        ) { }
 
-        private init(): void {
-            this.$log.info('MainController > init');
+        public $onInit(): void {
+            this.$log.info('MainController > $onInit');
         }
     }
 }
